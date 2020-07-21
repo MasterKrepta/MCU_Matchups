@@ -1,0 +1,24 @@
+﻿body {
+}
+
+
+.compareBoard {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+
+.charOne-profilePic {
+    width: 100%;
+}
+.charTwo-profilePic {
+    width: 100%;
+}
+
+
+.char-name {
+    font-weight: 900;
+}
+

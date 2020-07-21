@@ -21,11 +21,12 @@ namespace MCU_Matchup.Library.DataAccess
 
         public void GetCharacter(string name)
         {
-            var client = new RestClient("https://imdb8.p.rapidapi.com/title/get-charname-list?currentCountry=US&marketplace=ATVPDKIKX0DER&purchaseCountry=US&id=nm3964231&tconst=tt0944947");
+            var client = new RestClient("https://imdb8.p.rapidapi.com/title/get-top-cast?tconst=tt0944947");
             var request = new RestRequest(Method.GET);
             request.AddHeader("x-rapidapi-host", "imdb8.p.rapidapi.com");
             request.AddHeader("x-rapidapi-key", "3acacf8feemsh8281560185a0955p1e8594jsn954f4395d7b5");
             IRestResponse response = client.Execute(request);
+
 
         }
     }
