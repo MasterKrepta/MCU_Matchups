@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using MCU_Matchup.Library.Models;
+using RestSharp;
 using RestSharp.Authenticators;
 using System;
 using System.Collections.Generic;
@@ -19,15 +20,23 @@ namespace MCU_Matchup.Library.DataAccess
     public class DataAccess
     {
 
-        public void GetCharacter(string name)
+        //https://rapidapi.com/apidojo/api/imdb8?endpoint=apiendpoint_b6d49d19-162a-402b-a4df-f7862b760372
+        public ActorDetails GetCharacter(string character)
         {
-            var client = new RestClient("https://imdb8.p.rapidapi.com/title/get-top-cast?tconst=tt0944947");
+            var client = new RestClient($"https://imdb8.p.rapidapi.com/title/get-charname-list?currentCountry=US&marketplace=ATVPDKIKX0DER&purchaseCountry=US&id={character}&tconst=tt0944947");
             var request = new RestRequest(Method.GET);
             request.AddHeader("x-rapidapi-host", "imdb8.p.rapidapi.com");
             request.AddHeader("x-rapidapi-key", "3acacf8feemsh8281560185a0955p1e8594jsn954f4395d7b5");
             IRestResponse response = client.Execute(request);
 
+            //TODO parse the json into usable data
+            
+            ActorDetails actor = new ActorDetails
+            {
+                //todo populate this with parsed data
+            };
 
+            return actor;
         }
     }
 }

@@ -6,21 +6,28 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MCU_Matchups.Models;
+using MCU_Matchup.Library.DataAccess;
+using MCU_Matchup.Library.Models;
 
 namespace MCU_Matchups.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly DataAccess _dataAccess;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, DataAccess dataAccess)
         {
             _logger = logger;
+            _dataAccess = dataAccess;
         }
 
         public IActionResult Index()
         {
-            return View();
+            ActorDetails model = _dataAccess.GetCharacter(Helpers.IronMan);
+            
+            
+            return View(model);
         }
 
         public IActionResult Privacy()
