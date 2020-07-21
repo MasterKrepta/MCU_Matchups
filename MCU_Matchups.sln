@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCU_Matchups", "MCU_Matchups\MCU_Matchups.csproj", "{D66A548C-B4B6-4F81-8B0E-A1F10864A34C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCU_Matchup.Library", "MCU_Matchup.Library\MCU_Matchup.Library.csproj", "{192EE396-0571-4DD5-93CB-1B01DC048044}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D66A548C-B4B6-4F81-8B0E-A1F10864A34C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D66A548C-B4B6-4F81-8B0E-A1F10864A34C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D66A548C-B4B6-4F81-8B0E-A1F10864A34C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D66A548C-B4B6-4F81-8B0E-A1F10864A34C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{192EE396-0571-4DD5-93CB-1B01DC048044}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{192EE396-0571-4DD5-93CB-1B01DC048044}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{192EE396-0571-4DD5-93CB-1B01DC048044}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{192EE396-0571-4DD5-93CB-1B01DC048044}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {17BED533-2E81-4A78-A60E-65092F636162}
+	EndGlobalSection
+EndGlobal
