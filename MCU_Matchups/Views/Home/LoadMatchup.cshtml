@@ -1,16 +1,14 @@
 ﻿@model MCU_Matchup.Library.Models.ActorDetails
 
 @{
-
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "LoadMatchup";
 }
 
-    <div class="text-center">
-        <h1 class="display-4">The MCU Matchup</h1>
-        <p>Compare vital Character stats between characters from The marvel cinematic universe</p>
-        @Html.ActionLink("LoadMatchup", "LoadMatchup", new { /* id=item.PrimaryKey */ }) |
-    </div>
+<h1>LoadMatchup</h1>
 
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
 <div class="compareBoard">
     <div class="character-one">
         <img src="https://source.unsplash.com/random/500x500" alt="" class="charOne-profilePic">

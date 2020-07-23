@@ -1,5 +1,6 @@
 ﻿using MCU_Matchup.Library.Models;
 using RestSharp;
+using Newtonsoft.Json;
 using RestSharp.Authenticators;
 using System;
 using System.Collections.Generic;
@@ -30,11 +31,9 @@ namespace MCU_Matchup.Library.DataAccess
             IRestResponse response = client.Execute(request);
 
             //TODO parse the json into usable data
+            ActorDetails actor = JsonConvert.DeserializeObject<ActorDetails>(response.Content);
             
-            ActorDetails actor = new ActorDetails
-            {
-                //todo populate this with parsed data
-            };
+           
 
             return actor;
         }

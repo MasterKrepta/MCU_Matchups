@@ -25,11 +25,18 @@ namespace MCU_Matchups.Controllers
         public IActionResult Index()
         {
             ActorDetails model = _dataAccess.GetCharacter(Helpers.IronMan);
-            
-            
+
+
             return View(model);
         }
 
+
+        public IActionResult LoadMatchup()
+        {
+            ActorDetails model = _dataAccess.GetCharacter(Helpers.IronMan);
+
+            return View(model);
+        }
         public IActionResult Privacy()
         {
             return View();
