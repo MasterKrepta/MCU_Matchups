@@ -33,7 +33,7 @@ namespace MCU_Matchups.Controllers
 
         public IActionResult LoadMatchup()
         {
-            ActorDetails model = _dataAccess.GetCharacter(Helpers.IronMan);
+            Matchup model = _dataAccess.GetMatchup(Helpers.IronMan, Helpers.Hulk);
 
             return View(model);
         }
