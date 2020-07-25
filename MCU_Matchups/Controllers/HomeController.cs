@@ -24,8 +24,8 @@ namespace MCU_Matchups.Controllers
 
         public IActionResult Index()
         {
-            ActorDetails model = _dataAccess.GetCharacter(Helpers.IronMan);
-
+            //ActorDetails model = _dataAccess.GetCharacterFromIMDB(Helpers.IronMan);
+            Superhero model = _dataAccess.GetSuperHero("ironman");
 
             return View(model);
         }

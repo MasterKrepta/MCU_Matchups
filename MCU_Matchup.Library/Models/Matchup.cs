@@ -15,8 +15,8 @@ namespace MCU_Matchup.Library.Models
         public Matchup( string charOne, string charTwo, DataAccess.DataAccess dataAccess)
         {
             _dataAccess = dataAccess;
-            Actor_One  = _dataAccess.GetCharacter(charOne);
-            Actor_Two = _dataAccess.GetCharacter(charTwo);
+            Actor_One  = _dataAccess.GetCharacterFromIMDB(charOne);
+            Actor_Two = _dataAccess.GetCharacterFromIMDB(charTwo);
         }
     }
 }

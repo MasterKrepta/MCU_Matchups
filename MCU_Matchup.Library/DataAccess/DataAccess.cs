@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json.Linq;
+using System.Security.Cryptography;
 
 namespace MCU_Matchup.Library.DataAccess
 {
@@ -24,7 +25,137 @@ namespace MCU_Matchup.Library.DataAccess
     {
 
         //https://rapidapi.com/apidojo/api/imdb8?endpoint=apiendpoint_b6d49d19-162a-402b-a4df-f7862b760372
-        public ActorDetails GetCharacter(string character)
+
+
+        public Superhero GetSuperHero(string characterName)
+        {
+            var client = new RestClient($"https://superheroapi.com/api/10158692382838980/search/{characterName}");
+            var request = new RestRequest(Method.GET);
+            //request.AddHeader("x-rapidapi-host", "imdb8.p.rapidapi.com");
+            //request.AddHeader("x-rapidapi-key", "3acacf8feemsh8281560185a0955p1e8594jsn954f4395d7b5");
+            IRestResponse response = client.Execute(request);
+
+
+            JToken token = JToken.Parse(response.Content);
+            //string query = $"results-for{characterName}[0]";
+            //(string)token.SelectToken($"results[0].name");string name = (string)token.SelectToken($"results[0].name");
+
+
+
+            //TODO parse the json into usable data
+            Superhero superhero = new Superhero
+            {
+                Name = (string)token.SelectToken("results[0].name"),
+                PowerStats =  GetPowerStats(token),
+                Biography = GetBiography(token),
+                Appearance = GetAppearance(token),
+                Work = GetWork(token),
+                Connections = GetConnections(token),
+                ImageUrl = (string)token.SelectToken("results[0].image.url")
+            };
+
+            return superhero;
+
+        }
+
+        private PowerStats GetPowerStats(JToken token)
+        {
+            throw new NotImplementedException();
+        }
+
+        private Connections GetConnections(JToken token)
+        {
+            var conn = new Connections
+            {
+                GroupAffiliations = (string)token.SelectToken("results[0].connections.group-affiliation"),
+                Relatives = (string)token.SelectToken("results[0].connections.relatives")
+            };
+
+            return conn;
+        }
+        private Work GetWork(JToken token)
+        {
+            var work = new Work
+            {
+                Base = (string)token.SelectToken("results[0].work.base"),
+                Occupation = (string)token.SelectToken("results[0].work.occupation")
+            };
+            return work;
+        }
+
+        private Appearance GetAppearance(JToken token)
+        {
+            var appearance = new Appearance
+            {
+                Gender = (string)token.SelectToken("results[0].appearance.gender"),
+                Race = (string)token.SelectToken("results[0].appearance.race"),
+                Height = GetHeight(token),
+                Weight = GetWeight(token),
+                EyeColor = (string)token.SelectToken("results[0].appearance.eye-color"),
+                HairColor = (string)token.SelectToken("results[0].appearance.hair-color")
+
+            };
+
+            return appearance;
+
+        }
+
+
+        private Biography GetBiography(JToken token)
+        {
+            var bio = new Biography
+            {
+                FullName = (string)token.SelectToken("results[0].biography.full-name"),
+                AlterEgos = (string)token.SelectToken("results[0].biography.alter-egos"),
+                Aliases = GetAliases(token)
+
+        };
+
+            return bio;
+        }
+
+        private Weight GetWeight(JToken token)
+        {
+            var data = token.SelectToken("results[0].appearance.weight");
+
+            var weight = new Weight();
+            foreach (var a in data)
+            {
+                weight.WeightDetails.Add(a.ToString());
+            }
+
+
+            return weight;
+        }
+
+        private Height GetHeight(JToken token)
+        {
+            var data = token.SelectToken("results[0].appearance.height");
+
+            var height = new Height();
+            foreach (var a in data)
+            {
+                height.HeightList.Add(a.ToString());
+            }
+
+
+            return height;
+        }
+
+        private Aliases GetAliases(JToken token)
+        {
+            var data = token.SelectToken("results[0].biography.aliases");
+            
+            var alias = new Aliases();
+            foreach (var a in data)
+            {
+                alias.AliasNames.Add(a.ToString());
+            }
+            
+
+            return alias;
+        }
+    public ActorDetails GetCharacterFromIMDB(string character)
         {
 
             
