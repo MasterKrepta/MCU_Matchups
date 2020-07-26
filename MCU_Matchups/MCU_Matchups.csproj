@@ -12,4 +12,8 @@
     <ProjectReference Include="..\MCU_Matchup.Library\MCU_Matchup.Library.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\ims\" />
+  </ItemGroup>
+
 </Project>

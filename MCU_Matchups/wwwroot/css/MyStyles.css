@@ -1,8 +1,13 @@
 ﻿body {
+    background: url(../ims/bg.png);
+}
+.content {
+    background-color: azure;
+    padding: 15px 75px;
 }
 
-
 .compareBoard {
+    
     display: grid;
     grid-gap: 20px;
     grid-template-columns: 1fr 1fr;

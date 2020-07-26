@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json.Linq;
 using System.Security.Cryptography;
+using System.Linq;
 
 namespace MCU_Matchup.Library.DataAccess
 {
@@ -31,28 +32,39 @@ namespace MCU_Matchup.Library.DataAccess
         {
             var client = new RestClient($"https://superheroapi.com/api/10158692382838980/search/{characterName}");
             var request = new RestRequest(Method.GET);
-            //request.AddHeader("x-rapidapi-host", "imdb8.p.rapidapi.com");
-            //request.AddHeader("x-rapidapi-key", "3acacf8feemsh8281560185a0955p1e8594jsn954f4395d7b5");
             IRestResponse response = client.Execute(request);
 
-
-            JToken token = JToken.Parse(response.Content);
-            //string query = $"results-for{characterName}[0]";
-            //(string)token.SelectToken($"results[0].name");string name = (string)token.SelectToken($"results[0].name");
-
-
-
-            //TODO parse the json into usable data
-            Superhero superhero = new Superhero
+            JToken token;
+            try
             {
-                Name = (string)token.SelectToken("results[0].name"),
-                PowerStats =  GetPowerStats(token),
-                Biography = GetBiography(token),
-                Appearance = GetAppearance(token),
-                Work = GetWork(token),
-                Connections = GetConnections(token),
-                ImageUrl = (string)token.SelectToken("results[0].image.url")
-            };
+                token = JToken.Parse(response.Content);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            //todo impliment this instead - all null
+            //Superhero hero = JsonConvert.DeserializeObject<Superhero>(response.Content);
+
+            //Superhero hero = response.Content.ReadFromJson<Superhero>(); //https://www.youtube.com/watch?v=cwgck1k0YKU
+
+            Superhero superhero = new Superhero();
+            
+                //TODO REFACTOR: This should be parsed simpler with .NET
+                superhero = new Superhero
+                {
+                    
+                    Name = (string)token.SelectToken("results[0].name"),
+                    PowerStats = GetPowerStats(token),
+                    Biography = GetBiography(token),
+                    Appearance = GetAppearance(token),
+                    Work = GetWork(token),
+                    Connections = GetConnections(token),
+                    ImageUrl = (string)token.SelectToken("results[0].image.url")
+                };
+            
+       
 
             return superhero;
 
@@ -60,7 +72,21 @@ namespace MCU_Matchup.Library.DataAccess
 
         private PowerStats GetPowerStats(JToken token)
         {
-            throw new NotImplementedException();
+
+            
+            var power = new PowerStats
+            {
+                
+                Combat = (int)token.SelectToken("results[0].powerstats.combat"),
+
+                Durability = (int)token.SelectToken("results[0].powerstats.durability"),
+                Intelligence = (int)token.SelectToken("results[0].powerstats.intelligence"),
+                Power = (int)token.SelectToken("results[0].powerstats.power"),
+                Speed = (int)token.SelectToken("results[0].powerstats.speed"),
+                Strength = (int)token.SelectToken("results[0].powerstats.strength")
+            };
+
+            return power;
         }
 
         private Connections GetConnections(JToken token)
@@ -155,29 +181,29 @@ namespace MCU_Matchup.Library.DataAccess
 
             return alias;
         }
-    public ActorDetails GetCharacterFromIMDB(string character)
-        {
+    //public ActorDetails GetCharacterFromIMDB(string character)
+    //    {
 
             
-            var client = new RestClient($"https://imdb8.p.rapidapi.com/title/get-charname-list?currentCountry=US&marketplace=ATVPDKIKX0DER&purchaseCountry=US&id={character}&tconst=tt0944947");
-            var request = new RestRequest(Method.GET);
-            request.AddHeader("x-rapidapi-host", "imdb8.p.rapidapi.com");
-            request.AddHeader("x-rapidapi-key", "3acacf8feemsh8281560185a0955p1e8594jsn954f4395d7b5");
-            IRestResponse response = client.Execute(request);
+    //        var client = new RestClient($"https://imdb8.p.rapidapi.com/title/get-charname-list?currentCountry=US&marketplace=ATVPDKIKX0DER&purchaseCountry=US&id={character}&tconst=tt0944947");
+    //        var request = new RestRequest(Method.GET);
+    //        request.AddHeader("x-rapidapi-host", "imdb8.p.rapidapi.com");
+    //        request.AddHeader("x-rapidapi-key", "3acacf8feemsh8281560185a0955p1e8594jsn954f4395d7b5");
+    //        IRestResponse response = client.Execute(request);
 
 
-            JToken token = JToken.Parse(response.Content);
-            string query = $"{character}[0]";
-            JArray name = (JArray)token.SelectToken(query);
+    //        JToken token = JToken.Parse(response.Content);
+    //        string query = $"{character}[0]";
+    //        JArray name = (JArray)token.SelectToken(query);
             
 
-            //TODO parse the json into usable data
-            ActorDetails actor = JsonConvert.DeserializeObject<ActorDetails>(response.Content);
+    //        //TODO parse the json into usable data
+    //        ActorDetails actor = JsonConvert.DeserializeObject<ActorDetails>(response.Content);
             
            
 
-            return actor;
-        }
+    //        return actor;
+    //    }
 
         public Matchup GetMatchup(string characterOne, string characterTwo)
         {

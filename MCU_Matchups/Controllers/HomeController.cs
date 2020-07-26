@@ -25,7 +25,8 @@ namespace MCU_Matchups.Controllers
         public IActionResult Index()
         {
             //ActorDetails model = _dataAccess.GetCharacterFromIMDB(Helpers.IronMan);
-            Superhero model = _dataAccess.GetSuperHero("ironman");
+            var randomMatchup = Helpers.GetRandomCharacters();
+            Matchup model = _dataAccess.GetMatchup(randomMatchup[0], randomMatchup[1]);
 
             return View(model);
         }
@@ -33,7 +34,8 @@ namespace MCU_Matchups.Controllers
 
         public IActionResult LoadMatchup()
         {
-            Matchup model = _dataAccess.GetMatchup(Helpers.IronMan, Helpers.Hulk);
+            var randomMatchup = Helpers.GetRandomCharacters();
+            Matchup model = _dataAccess.GetMatchup(randomMatchup[0], randomMatchup[1]);
 
             return View(model);
         }
