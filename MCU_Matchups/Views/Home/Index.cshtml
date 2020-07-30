@@ -15,16 +15,34 @@
 
         <div class="compareBoard">
             <div class="character-one">
-                <img src="@Model.SuperHero_1.ImageUrl" alt="" class="charOne-profilePic">
+                <img src="@Model.SuperHero_1.ImageUrl.Url" alt="" class="charOne-profilePic">
                 <h4 class="text-center char-name">@Model.SuperHero_1.Name</h4>
                 <hr>
-                <p>Hours on Screen: ##:##</p>
+                <h3>Power Stats</h3>
+                <ul>
+                    <li>Combat: @Model.SuperHero_1.PowerStats.Combat</li>
+                    <li>Durability: @Model.SuperHero_1.PowerStats.Durability</li>
+                    <li>Intelligence: @Model.SuperHero_1.PowerStats.Intelligence</li>
+                    <li>Power: @Model.SuperHero_1.PowerStats.Power</li>
+                    <li>Speed: @Model.SuperHero_1.PowerStats.Speed </li>
+                    <li>Strength: @Model.SuperHero_1.PowerStats.Strength</li>
+                    
+                </ul>
             </div>
             <div class="character-two">
-                <img src="@Model.SuperHero_2.ImageUrl" alt="" class="charTwo-profilePic">
+                <img src="@Model.SuperHero_2.ImageUrl.Url" alt="" class="charTwo-profilePic">
                 <h4 class="text-center char-name">@Model.SuperHero_2.Name</h4>
                 <hr>
-                <p>Hours on Screen: ##:##</p>
+                <h3>Power Stats</h3>
+                <ul>
+                    <li>Combat: @Model.SuperHero_2.PowerStats.Combat</li>
+                    <li>Durability: @Model.SuperHero_2.PowerStats.Durability</li>
+                    <li>Intelligence: @Model.SuperHero_2.PowerStats.Intelligence</li>
+                    <li>Power: @Model.SuperHero_2.PowerStats.Power</li>
+                    <li>Speed: @Model.SuperHero_2.PowerStats.Speed </li>
+                    <li>Strength: @Model.SuperHero_2.PowerStats.Strength</li>
+
+                </ul>
             </div>
         </div>
     </div>

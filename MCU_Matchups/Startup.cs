@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using MCU_Matchup.Library.DataAccess;
 using Microsoft.AspNetCore.Builder;
@@ -26,6 +27,7 @@ namespace MCU_Matchups
         {
             services.AddControllersWithViews();
             services.AddSingleton<DataAccess>();
+            services.AddSingleton<HttpClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

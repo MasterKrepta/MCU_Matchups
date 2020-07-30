@@ -5,9 +5,10 @@ using System.Text;
 
 namespace MCU_Matchup.Library.Models
 {
-    public class Aliases
+    
+    public class ImageUrl
     {
-        [JsonProperty("aliases")]
-        public List<string> AliasNames { get; set; } = new List<string>();
+        
+        public string Url { get; set; }
     }
 }

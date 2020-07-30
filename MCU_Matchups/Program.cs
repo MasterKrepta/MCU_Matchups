@@ -21,6 +21,7 @@ namespace MCU_Matchups
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    
                 });
     }
 }

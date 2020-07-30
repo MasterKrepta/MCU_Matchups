@@ -1,12 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 
 namespace MCU_Matchup.Library.DataAccess
 {
-    public class Helpers
+    public static class Helpers
     {
+        public static HttpClient ApiClient { get; set; } = new HttpClient();
+
+
+        public static void InitialzeClient()
+        {
+            ApiClient = new HttpClient();
+            //ApiClient.BaseAddress = new Uri("https://superheroapi.com/api");
+            ApiClient.DefaultRequestHeaders.Accept.Clear();
+            ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        }
+
         //https://www.imdb.com/title/tt4154796/fullcredits/?ref_=tt_ov_st_sm
         public const string IronMan = "ironman";/*"nm0000375";*/
         public const string CaptainAmerica = "nm0262635";
@@ -46,7 +59,7 @@ namespace MCU_Matchup.Library.DataAccess
             "nebula",
             "gamora",
             "wasp",
-            "valkyrie",
+            //"valkyrie",
             "scarlet_witch",
             "falcon",
             "winter_soldier",
