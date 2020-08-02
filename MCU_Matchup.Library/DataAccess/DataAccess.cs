@@ -30,6 +30,12 @@ namespace MCU_Matchup.Library.DataAccess
             return hero.Results[0];
         }
 
+        public Scenario GetRandomScenario()
+        {
+            Scenario s = Helpers.GetRandomScenario();
+
+            return s;
+        }
         public Matchup GetMatchup(string characterOne, string characterTwo)
         {
             return new Matchup(characterOne, characterTwo, this);

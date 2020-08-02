@@ -12,8 +12,13 @@
             <p>Compare vital Character stats between characters from The marvel cinematic universe</p>
             @Html.ActionLink("LoadMatchup", "LoadMatchup", new { /* id=item.PrimaryKey */ })
         </div>
+        <section class="scenario">
+            <h2 class="scenario-name">@Model.Scenario.Name</h2>
+            <p class="scenario-text">@Model.Scenario.Text</p>
+            <hr>
+        </section>
 
-        <div class="compareBoard">
+        <section class="compareBoard">
             <div class="character-one">
                 <img src="@Model.SuperHero_1.ImageUrl.Url" alt="" class="charOne-profilePic">
                 <h4 class="text-center char-name">@Model.SuperHero_1.Name</h4>
@@ -44,5 +49,10 @@
 
                 </ul>
             </div>
-        </div>
+        </section>
+        <section class="run-matchup">
+            <hr>
+            <h3>Who will win?</h3>
+            <button class="btn btn-primary btn-lg">Click me</button>
+        </section>
     </div>

@@ -10,6 +10,7 @@ namespace MCU_Matchup.Library.Models
     {
         public Superhero SuperHero_1 { get; set; }
         public Superhero SuperHero_2 { get; set; }
+        public Scenario Scenario { get; set; }
         private readonly DataAccess.DataAccess _dataAccess;
 
         public Matchup( string charOne, string charTwo, DataAccess.DataAccess dataAccess)
@@ -17,6 +18,7 @@ namespace MCU_Matchup.Library.Models
             _dataAccess = dataAccess;
             SuperHero_1 = _dataAccess.GetSuperHero(charOne);
             SuperHero_2 = _dataAccess.GetSuperHero(charTwo);
+            Scenario = _dataAccess.GetRandomScenario();
         }
     }
 }

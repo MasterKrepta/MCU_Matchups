@@ -6,9 +6,25 @@
     padding: 15px 75px;
 }
 
-.compareBoard {
-    
+
+.scenario {
+    background-color: cadetblue;
     display: grid;
+    place-items: center;
+}
+.scenario-name{
+
+}
+
+
+.scenario-text {
+    padding: 1.2rem;
+    color: white;
+}
+
+.compareBoard {
+    display: grid;
+    height: 90vh;
     grid-gap: 200px;
     grid-template-columns: 1fr 1fr;
 }
@@ -31,3 +47,8 @@
     font-weight: 900;
 }
 
+
+.run-matchup {
+    display: grid;
+    place-items: center;
+}
