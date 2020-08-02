@@ -21,6 +21,7 @@ namespace MCU_Matchup.Library.DataAccess
 
         public Superhero GetSuperHero(string characterName)
         {
+            //todo research to set this explicity: thor is returning lex luthor by mistake. 
             
             var client = new RestClient($"https://superheroapi.com/api/10158692382838980/search/{characterName}");
             var request = new RestRequest(Method.GET);
@@ -31,7 +32,7 @@ namespace MCU_Matchup.Library.DataAccess
 
 
             SuperHeroResultsModel hero = JsonConvert.DeserializeObject<SuperHeroResultsModel>(response.Content);
-
+            hero.Results[0].NameWeSearchedfor = characterName;
             return hero.Results[0];
         }
 
