@@ -9,8 +9,9 @@ namespace MCU_Matchup.Library.Models
     {
         public string Gender { get; set; }
         public string Race { get; set; }
-        //public Height Height { get; set; }
-        //public Weight Weight { get; set; }
+        public List<string> Height { get; set; }
+        public List<string> Weight { get; set; }
+        
         [JsonProperty("eye-color")]
         public string EyeColor { get; set; }
         [JsonProperty("hair-color")]
