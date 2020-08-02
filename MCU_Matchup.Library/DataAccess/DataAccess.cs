@@ -21,9 +21,14 @@ namespace MCU_Matchup.Library.DataAccess
 
         public Superhero GetSuperHero(string characterName)
         {
+            
             var client = new RestClient($"https://superheroapi.com/api/10158692382838980/search/{characterName}");
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
+
+            //prevents nulls, since API is out of our control
+            response.Content = response.Content.Replace("null", "0");
+
 
             SuperHeroResultsModel hero = JsonConvert.DeserializeObject<SuperHeroResultsModel>(response.Content);
 
