@@ -12,7 +12,6 @@ namespace MCU_Matchup.Library.DataAccess
     {
         public static HttpClient ApiClient { get; set; } = new HttpClient();
 
-
         public static void InitialzeClient()
         {
             ApiClient = new HttpClient();
@@ -24,25 +23,25 @@ namespace MCU_Matchup.Library.DataAccess
         //! list can return lex luthor for unknown reasons
         static IList<string> Characters = new ReadOnlyCollection<string>(new List<string>
         {
-            "ironman",
-            "hulk",
-            "captain_america",
-            "thor",
-            "black_widow",
-            "hawkeye",
-            "war_machine",
-            "ant_man",
-            "doctor_strange",
-            "black_panther",
-            "spider_man",
-            "nebula",
-            "gamora",
-            "wasp",
-            "valkyrie",
-            "scarlet_witch",
-            "falcon",
-            "winter_soldier",
-            "loki"
+            "346",
+            "332",
+            "149",
+            "659",
+            "107",
+            "313",
+            "703",
+            "30",
+            "226",
+            "106",
+            "620",
+            "487",
+            "275",
+            "708",
+            "684",
+            "579",
+            "251",
+            "714",
+            "414"
         });
 
         static List<Scenario> Scenarios = new List<Scenario>()
@@ -61,9 +60,7 @@ namespace MCU_Matchup.Library.DataAccess
             
             return Scenarios[selected];
         }
-                
-            
-
+        
         public static List<string> GetRandomCharacters()
         {
             var result = new List<string>();
@@ -76,8 +73,6 @@ namespace MCU_Matchup.Library.DataAccess
             result.Add(Characters[second]);
 
             return result;
-
-
         }
     }
 }

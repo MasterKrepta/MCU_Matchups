@@ -11,7 +11,6 @@ namespace MCU_Matchup.Library.Models
     {
         public int Id { get; set; }
 
-        public string NameWeSearchedfor { get; set; }
         public string Name { get; set; }
         public PowerStats PowerStats { get; set; }
         public Biography Biography { get; set; }
