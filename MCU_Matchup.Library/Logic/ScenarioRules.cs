@@ -50,7 +50,6 @@ namespace MCU_Matchup.Library.Logic
             "3",
             "4"
         };
-            
 
             return rnd.Next(modifiers.Count);
         }
@@ -62,7 +61,6 @@ namespace MCU_Matchup.Library.Logic
             PrimaryStat = Stats.Pop();
             SecondaryStat = Stats.Pop();
             TertiaryStat = Stats.Pop();
-
         }
 
         private void ConfigStack()
@@ -82,7 +80,9 @@ namespace MCU_Matchup.Library.Logic
             var values = stack.ToArray();
             stack.Clear();
             foreach (var value in values.OrderBy(x => rnd.Next()))
+            {
                 stack.Push(value);
+            }
         }
     }
 }

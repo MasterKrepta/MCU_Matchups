@@ -44,7 +44,6 @@
                     <li>Power: @Model.SuperHero_2.PowerStats.Power</li>
                     <li>Speed: @Model.SuperHero_2.PowerStats.Speed </li>
                     <li>Strength: @Model.SuperHero_2.PowerStats.Strength</li>
-
                 </ul>
             </div>
         </section>
@@ -56,6 +55,6 @@
                 <h3>Secondary Stats: @Model.Scenario.Rules.SecondaryStat</h3>
                 <h3>Tertiary Stats: @Model.Scenario.Rules.TertiaryStat</h3>
             </div>
-            <button class="btn btn-primary btn-lg">Click me</button>
+            <button class="btn btn-primary btn-lg">@Html.ActionLink("ScoreMatchup", "ScoreMatchup", new { /*TODO figure out how i want to do this, should probobly calculate and then return the view*/})</button>
         </section>
     </div>

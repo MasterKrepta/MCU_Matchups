@@ -42,6 +42,12 @@ namespace MCU_Matchups.Controllers
 
             return View(model);
         }
+
+        public IActionResult ScoreMatchup(Matchup matchup)
+        {
+            //todo what should i return (make endpoint model)?
+            return View(matchup.SuperHero_1);
+        }
         public IActionResult Privacy()
         {
             return View();

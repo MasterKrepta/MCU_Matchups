@@ -37,10 +37,7 @@ namespace MCU_Matchup.Library.DataAccess
 
         public Scenario GetRandomScenario()
         {
-            Scenario s = Helpers.GetRandomScenario();
-            //s.Rules.InitModifiers();
-
-            return s;
+            return Helpers.GetRandomScenario();
         }
         public Matchup GetMatchup(string characterOne, string characterTwo)
         {
