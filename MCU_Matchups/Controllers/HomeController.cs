@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using MCU_Matchups.Models;
 using MCU_Matchup.Library.DataAccess;
 using MCU_Matchup.Library.Models;
+using MCU_Matchup.Library.Logic;
 
 namespace MCU_Matchups.Controllers
 {
@@ -15,11 +16,13 @@ namespace MCU_Matchups.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly DataAccess _dataAccess;
+        private readonly MatchupProcessor _matchupProcessor;
 
-        public HomeController(ILogger<HomeController> logger, DataAccess dataAccess)
+        public HomeController(ILogger<HomeController> logger, DataAccess dataAccess/*, *MatchupProcessor matchupProcessor*/)
         {
             _logger = logger;
             _dataAccess = dataAccess;
+            //_matchupProcessor = matchupProcessor;
         }
 
         public IActionResult Index()

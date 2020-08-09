@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using MCU_Matchup.Library;
 using MCU_Matchup.Library.DataAccess;
+using MCU_Matchup.Library.Logic;
 
 namespace MCU_Matchup.Library.Models
 {
@@ -18,6 +19,7 @@ namespace MCU_Matchup.Library.Models
             _dataAccess = dataAccess;
             SuperHero_1 = _dataAccess.GetSuperHero(charOne);
             SuperHero_2 = _dataAccess.GetSuperHero(charTwo);
+             
 
             //Prevent duplicates
             if (SuperHero_2.Name == SuperHero_1.Name)
@@ -33,6 +35,7 @@ namespace MCU_Matchup.Library.Models
             }
             
             Scenario = _dataAccess.GetRandomScenario();
+            
         }
     }
 }

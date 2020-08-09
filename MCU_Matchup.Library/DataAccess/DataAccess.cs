@@ -38,6 +38,7 @@ namespace MCU_Matchup.Library.DataAccess
         public Scenario GetRandomScenario()
         {
             Scenario s = Helpers.GetRandomScenario();
+            //s.Rules.InitModifiers();
 
             return s;
         }
@@ -46,5 +47,6 @@ namespace MCU_Matchup.Library.DataAccess
             return new Matchup(characterOne, characterTwo, this);
             
         }
+  
     }
 }
