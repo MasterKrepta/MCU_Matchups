@@ -9,6 +9,7 @@ namespace MCU_Matchup.Library.Models
 {
     public class Matchup
     {
+        public int Id { get; set; }
         public Superhero SuperHero_1 { get; set; }
         public Superhero SuperHero_2 { get; set; }
         public Scenario Scenario { get; set; }

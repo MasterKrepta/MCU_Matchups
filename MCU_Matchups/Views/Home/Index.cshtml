@@ -19,7 +19,9 @@
 
         <section class="compareBoard">
             <div class="character-one">
+                
                 <img src="@Model.SuperHero_1.ImageUrl.Url" alt="" class="charOne-profilePic">
+                
                 <h4 class="text-center char-name">@Model.SuperHero_1.Name</h4>
                 <hr>
                 <h3>Power Stats</h3>
@@ -55,6 +57,11 @@
                 <h3>Secondary Stats: @Model.Scenario.Rules.SecondaryStat</h3>
                 <h3>Tertiary Stats: @Model.Scenario.Rules.TertiaryStat</h3>
             </div>
-            <button class="btn btn-primary btn-lg">@Html.ActionLink("ScoreMatchup", "ScoreMatchup", new { /*TODO figure out how i want to do this, should probobly calculate and then return the view*/})</button>
+            
+            <button class="btn btn-primary btn-lg" >@Html.ActionLink("ScoreMatchup",
+                                                   "ScoreMatchup",
+                                                   "Home",
+                                                   /*TODO figure out how i want to do this, should probobly calculate and then return the view*/
+                                                   new {   hero1 = Model.SuperHero_1.Id.ToString(), hero2 = Model.SuperHero_2.Id.ToString()})</button>
         </section>
     </div>

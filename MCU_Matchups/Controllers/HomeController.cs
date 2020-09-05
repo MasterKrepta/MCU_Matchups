@@ -43,10 +43,11 @@ namespace MCU_Matchups.Controllers
             return View(model);
         }
 
-        public IActionResult ScoreMatchup(Matchup matchup)
+        public IActionResult ScoreMatchup(string hero1, string hero2)
         {
+            var winner = _dataAccess.GetSuperHero(hero1);
             //todo what should i return (make endpoint model)?
-            return View(matchup.SuperHero_1);
+            return View(winner);
         }
         public IActionResult Privacy()
         {

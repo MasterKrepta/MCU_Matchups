@@ -8,9 +8,6 @@ namespace MCU_Matchup.Library.Logic
 {
     public class ScenarioRules
     {
-
-        
-
         public float IntelligenceMultiplyer { get; set; }
         public float StrengthMulitplyer { get; set; }
         public float SpeedMultiplyer { get; set; }
@@ -19,7 +16,6 @@ namespace MCU_Matchup.Library.Logic
         public float CombatMultiplyer { get; set; }
 
         public Stack<string> Stats = new Stack<string>();
-   
 
         public string PrimaryStat { get; set; } 
         public string SecondaryStat { get; set; }

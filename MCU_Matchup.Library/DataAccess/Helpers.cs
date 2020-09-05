@@ -20,7 +20,6 @@ namespace MCU_Matchup.Library.DataAccess
             ApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        //! list can return lex luthor for unknown reasons
         static IList<string> Characters = new ReadOnlyCollection<string>(new List<string>
         {
             "346",
